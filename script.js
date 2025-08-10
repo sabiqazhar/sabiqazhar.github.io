@@ -4,8 +4,8 @@ const output = document.getElementById('output');
 const commands = {
   help: () => `Available commands: about, projects, contact, clear`,
   about: () => `I'm a Software Engineer & Data Engineer who loves open-source, books, and coffee.`,
-  projects: () => `Check my GitHub: https://github.com/sabiqazhar`,
-  contact: () => `Email: sabiqandazhar@gmail.com | LinkedIn: https://linkedin.com/in/sabiqazhar | Medium: https://medium.com/sabiqazhar`,
+  projects: () => `Check my GitHub: <a href="https://github.com/sabiqazhar" target="_blank">https://github.com/sabiqazhar</a>`,
+  contact: () => `Email: sabiqandazhar@gmail.com | LinkedIn: <a href="https://linkedin.com/in/sabiqazhar" target="_blank">https://linkedin.com/in/sabiqazhar</a>`,
   clear: () => { output.innerHTML = ''; return ''; }
 };
 
@@ -21,7 +21,7 @@ cli.addEventListener('keydown', (e) => {
 
 function appendLine(text) {
   const p = document.createElement('p');
-  p.textContent = text;
+  p.innerHTML = text;
   output.appendChild(p);
   p.scrollIntoView({ behavior: 'smooth' });
 }
