@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Sabiq Azhar </title>
-  <link rel="stylesheet" href="style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Blog 2006</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-  <div id="terminal">
-    <div id="bar">
-      <span class="dot red"></span>
-      <span class="dot yellow"></span>
-      <span class="dot green"></span>
-    </div>
-    <div id="screen">
-      <div id="output">
-        <p>Hi, I'm Sabiq Azhar. I'm passionate about tech, especially Linux, Cloud, Containers, Data Engineering, Backend, Scalable System and more.</p>
-        <p>Find my thoughts and insights on <a href="https://medium.com/sabiqazhar" target="_blank">https://medium.com/sabiqazhar</a>.</p>
-        <p>Let's connect and chat about the latest in tech.</p>
-        <p>Type "<span class="cyan">help</span>" for a list of available commands.</p>
-      </div>
+    <div class="wrapper">
+        <header>
+            <h1>Sabiq Azhar</h1>
+            <p class="tagline">Welcome to my digital diary.</p>
+        </header>
 
-      <div id="input-line">
-        <span id="prompt">guest@sabiqaz:~/aboutme$ </span>
-        <input id="cli" type="text" autocomplete="off" autofocus>
-      </div>
-    </div>
-  </div>
+        <nav>
+            <a href="/home" onclick="navigate(event)">Home</a> |
+            <a href="/blog" onclick="navigate(event)">Blog</a> |
+            <a href="mailto:email@kamu.com">Contact Me</a>
+        </nav>
 
-  <script src="script.js"></script>
+        <div class="content-box">
+            <main id="content-area">
+                <p>Loading...</p>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; <span id="year"></span> - Best viewed with IE 6.0</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,10 @@
+{
+  "posts": [
+    {
+      "slug": "test",
+      "title": "Belajar System Design Dasar",
+      "date": "2024-03-30",
+      "excerpt": "Pemahaman dasar tentang load balancer, database scaling, dan caching..."
+    }
+  ]
+}

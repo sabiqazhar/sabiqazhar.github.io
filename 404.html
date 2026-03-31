@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>
+        var path = window.location.pathname;
+        var base = window.location.pathname.match(/^\/[^\/]+\//);
+        if (base) {
+            var relative = path.replace(base[0], '/');
+            window.location.replace(base[0] + '?path=' + encodeURIComponent(relative));
+        }
+    </script>
+</head>
+<body></body>
+</html>
