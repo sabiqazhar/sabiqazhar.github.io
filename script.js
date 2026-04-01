@@ -14,9 +14,9 @@ function handleRoute() {
 
   if (!path || path === 'home') {
     renderHome();
-  } else if (path === 'blog') {
+  } else if (path === 'projects') {
     renderBlogList();
-  } else if (path.startsWith('blog/')) {
+  } else if (path.startsWith('projects/')) {
     const slug = path.split('/')[1];
     renderPost(slug);
   } else {
@@ -27,7 +27,7 @@ function handleRoute() {
 async function renderHome() {
   const html = marked.parse(`
 # Hello World!
-Selamat datang di blog retro saya. Silakan cek [Blog List](/blog) untuk baca tulisan lama.
+Selamat datang di projects retro saya. Silakan cek [projects List](/projects) untuk baca tulisan lama.
   `);
   document.getElementById('content-area').innerHTML = html;
 }
@@ -37,19 +37,19 @@ async function renderBlogList() {
   container.innerHTML = '<p>Loading post list...</p>';
 
   try {
-    const res = await fetch(basePath + 'blog/index.json');
+    const res = await fetch(basePath + 'projects/index.json');
     if (!res.ok) throw new Error('Failed to load index.json');
 
     const data = await res.json();
 
-    let html = '<h2>Blog Archive</h2><ul class="blog-list">';
+    let html = '<h2>Project Archive</h2><ul class="projects-list">';
     data.posts.forEach(post => {
       html += `
             <li class="post-item">
                 <div class="post-date">${post.date}</div>
-                <a href="/blog/${post.slug}" onclick="navigate(event)" class="post-title">${post.title}</a>
+                <a href="/projects/${post.slug}" onclick="navigate(event)" class="post-title">${post.title}</a>
                 <p class="post-excerpt">${post.excerpt}</p>
-                <a href="/blog/${post.slug}" onclick="navigate(event)">[Read More...]</a>
+                <a href="/projects/${post.slug}" onclick="navigate(event)">[Read More...]</a>
                 <hr>
             </li>`;
     });
@@ -57,7 +57,7 @@ async function renderBlogList() {
     container.innerHTML = html;
 
   } catch (err) {
-    container.innerHTML = `<p style="color:red">Error loading blog list: ${err.message}</p>`;
+    container.innerHTML = `<p style="color:red">Error loading Projects list: ${err.message}</p>`;
   }
 }
 
@@ -66,11 +66,11 @@ async function renderPost(slug) {
   container.innerHTML = '<p>Loading post...</p>';
 
   try {
-    const res = await fetch(basePath + `blog/${slug}.md`);
+    const res = await fetch(basePath + `projects/${slug}.md`);
     if (!res.ok) throw new Error('Post not found');
 
     const text = await res.text();
-    const backBtn = `<p><a href="/blog" onclick="navigate(event)">&larr; Back to Blog List</a></p>`;
+    const backBtn = `<p><a href="/projects" onclick="navigate(event)">&larr; Back to Project List</a></p>`;
     container.innerHTML = backBtn + marked.parse(text);
 
   } catch (err) {
