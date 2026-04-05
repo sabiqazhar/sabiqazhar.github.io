@@ -27,7 +27,20 @@ function handleRoute() {
 async function renderHome() {
   const html = marked.parse(`
 # Hello World!
-Selamat datang di projects retro saya. Silakan cek [projects List](/projects) untuk baca tulisan lama.
+
+<img src="asset/sabiqaz.jpeg" alt="Sabiq Azhar" class="profile-photo-inline">
+
+I build software that translates complex business operations into reliable systems.
+
+My work centers on **enterprise resource planning**, **financial compliance**, and **high-volume transaction processing**. I have engineered backend solutions for large-scale industries, ensuring data consistency in inventory management and automating critical accounting workflows.
+
+Beyond enterprise systems, I have developed platforms that connect users to property services and streamline operations for small businesses. My approach is rooted in understanding the operational problem first, then designing the architecture to solve it sustainably.
+
+I prioritize **stability**, **accuracy**, and delivering tools that empower business teams rather than just writing code.
+
+---
+
+*This is my little corner of the internet. Take a look at my [projects](/projects) or feel free to [reach out](mailto:sabiqandazhar@gmail.com) if you'd like to collaborate.*
   `);
   document.getElementById('content-area').innerHTML = html;
 }
