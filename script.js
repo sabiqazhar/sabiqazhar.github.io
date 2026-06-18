@@ -19,6 +19,8 @@ function handleRoute() {
   } else if (path.startsWith('projects/')) {
     const slug = path.split('/')[1];
     renderPost(slug);
+  } else if (path === 'contact') {
+    renderContact();
   } else {
     renderHome();
   }
@@ -89,6 +91,22 @@ async function renderPost(slug) {
   } catch (err) {
     container.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
   }
+}
+
+async function renderContact() {
+  const html = marked.parse(`
+# Contact Me
+
+If you'd like to collaborate, have a question, or just want to say hello, feel free to reach out.
+
+## Social Media
+
+- <i class="ph ph-github-logo"></i> **GitHub:** [github.com/sabiqazhar](https://github.com/sabiqazhar)
+- <i class="ph ph-medium-logo"></i> **Medium:** [medium.com/@sabiqazhar](https://medium.com/@sabiqaz)
+- <i class="ph ph-linkedin-logo"></i> **LinkedIn:** [linkedin.com/in/sabiqazhar](https://linkedin.com/in/sabiqazhar)
+- <i class="ph ph-envelope-simple"></i> **Email:** [sabiqandazhar@gmail.com](mailto:sabiqandazhar@gmail.com)
+  `);
+  document.getElementById('content-area').innerHTML = html;
 }
 
 window.addEventListener('popstate', handleRoute);
