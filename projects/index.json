@@ -6,5 +6,7 @@
       "date": "2024-11-20",
       "excerpt": "ERPNext Indonesia Localization is a custom application that helps businesses comply with Indonesian tax regulations through ERPNext."
     }
-  ]
+  ,
+{"slug":"tailtime-nvim","title":"tailtime.nvim","date":"2026-07-16","excerpt":"A lightweight, privacy-first time tracking plugin for Neovim with project-based tasks, priority levels, live timer, git integration, and local-only storage."}
+]
 }
