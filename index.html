@@ -1,37 +1,156 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabiq Azhar - Software Engineer</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sabiqazhar: software engineer — backend / systems / data</title>
+  <meta name="description" content="Sabiq Azhar Prayoga is a software engineer in Indonesia working on backend systems, ERP and business systems, and data-intensive software. Go, Python, distributed systems.">
+  <link rel="canonical" href="https://sabiqazhar.github.io/">
+  <meta name="author" content="Sabiq Azhar Prayoga">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="sabiqazhar: software engineer">
+  <meta property="og:description" content="Backend systems, ERP / business systems, data-intensive software. I analyze. I adapt. I build.">
+  <meta property="og:url" content="https://sabiqazhar.github.io/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23551a8b'/><text x='50' y='70' font-size='60' font-family='monospace' font-weight='bold' text-anchor='middle' fill='white'>s</text></svg>">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <div class="header-content">
-                <h1>Sabiq Azhar</h1>
-                <p class="tagline">Think. Adapt. Build.</p>
-            </div>
-        </header>
+  <div id="masthead">
+    <a class="logo" href="/">sabiqazhar</a>
+    <span class="bc"><a href="/">home</a></span>
+  </div>
+  <div id="topnav">
+    <a href="#work">work</a>
+    <a href="#experience">experience</a>
+    <a href="#stack">stack</a>
+    <a href="#writing">writing</a>
+    <a href="#about">about</a>
+    <a href="https://github.com/sabiqazhar">github</a>
+  </div>
+  <hr>
+  <p class="tagline">software engineer — backend / systems / data. i analyze. i adapt. i build. — <a href="https://github.com/sabiqazhar">github.com/sabiqazhar</a></p>
 
-        <nav>
-            <a href="/home" onclick="navigate(event)">Home</a> |
-            <a href="/projects" onclick="navigate(event)">Projects</a> |
-            <a href="/contact" onclick="navigate(event)">Contact Me</a>
-        </nav>
-
-        <div class="content-box">
-            <main id="content-area">
-                <p>Loading...</p>
-            </main>
-        </div>
-
-        <footer>
-            <p>&copy; <span id="year"></span> - Best viewed with IE 6.0</p>
-        </footer>
+  <div id="front">
+    <div class="col">
+      <div class="box lists">
+        <h3>contact</h3>
+        <ul>
+          <li><a href="mailto:sabiqandazhar@gmail.com">email</a></li>
+          <li><a href="https://github.com/sabiqazhar">github</a></li>
+          <li><a href="https://linkedin.com/in/sabiqazhar">linkedin</a></li>
+          <li><a href="https://medium.com/@sabiqaz">medium</a></li>
+        </ul>
+        <h3>profile</h3>
+        <ul>
+          <li>sabiq azhar prayoga</li>
+          <li>software engineer</li>
+          <li>depok, indonesia (utc+7)</li>
+          <li>open to work</li>
+        </ul>
+      </div>
+      <div class="box lists" id="stack">
+        <h3>stack</h3>
+        <ul>
+          <li>go, python, typescript/js</li>
+          <li>rust (learning), lua, php</li>
+        </ul>
+        <h3>backend</h3>
+        <ul>
+          <li>rest apis, postgresql</li>
+          <li>mariadb, redis</li>
+          <li>frappe / erpnext</li>
+        </ul>
+        <h3>systems</h3>
+        <ul>
+          <li>distributed systems</li>
+          <li>concurrency, caching</li>
+          <li>data pipelines (cdc, etl)</li>
+        </ul>
+        <h3>tools</h3>
+        <ul>
+          <li>docker, linux, git</li>
+          <li>neovim, ci/cd</li>
+        </ul>
+      </div>
     </div>
-    <script src="script.js"></script>
+
+    <div class="col" style="flex:1">
+      <h3 id="work">selected work</h3>
+      <table class="rows">
+        <tbody id="work-rows">
+          <tr><td class="muted">loading...</td></tr>
+        </tbody>
+      </table>
+      <noscript>
+        <table class="rows">
+          <tbody>
+            <tr>
+              <td class="d">2024-11-20</td>
+              <td class="t"><a href="projects/erpnext-indonesia-localization.html">erpnext indonesia localization</a><br><span class="snip">coretax-compatible xml, ppn + nitku, batch export. <a href="https://github.com/sabiqazhar/erpnext-indonesia-localization">repo</a></span></td>
+              <td class="c">erp / python</td>
+            </tr>
+            <tr>
+              <td class="d">2026-07-16</td>
+              <td class="t"><a href="projects/tailtime-nvim.html">tailtime.nvim</a><br><span class="snip">privacy-first time tracker inside neovim. <a href="https://github.com/sabiqazhar/tailtime.nvim">repo</a></span></td>
+              <td class="c">tool / lua</td>
+            </tr>
+          </tbody>
+        </table>
+      </noscript>
+      <p class="small"><a href="https://github.com/sabiqazhar?tab=repositories">all 43 repositories on github</a></p>
+
+      <h3 id="experience">experience</h3>
+      <p><b>erp &amp; financial compliance.</b> indonesia's coretax rollout meant erpnext data had to become government-valid xml. built a frappe-native localization layer (doctypes, transform services, batch export) so validation lives where the data lives — ppn flows and branch nitku identities handled in-app.</p>
+      <p><b>high-volume transactions.</b> inventory and accounting workloads punish naive queries. model the operation first, then tighten database access, enforce transactional boundaries, automate the critical accounting paths.</p>
+      <p><b>business applications.</b> property-service matching and umkm operations moved from chat threads to small, strict domain models optimized for non-technical operators.</p>
+      <p><b>data &amp; concurrency.</b> a go cdc pipeline for streaming semantics, plus written-up experiments on db locking vs. race conditions (see writing).</p>
+
+      <h3>experiments</h3>
+      <ul class="plain" id="exp-list">
+        <li class="muted">loading...</li>
+      </ul>
+      <noscript>
+        <ul class="plain">
+          <li><a href="https://github.com/sabiqazhar/clinic-monolith">clinic-monolith</a> — modular monolith structure in go <span class="muted">(go)</span></li>
+          <li><a href="https://github.com/sabiqazhar/stickrs">stickrs</a> — note it. stick it. done. <span class="muted">(product)</span></li>
+        </ul>
+      </noscript>
+
+      <h3 id="writing">writing</h3>
+      <table class="rows">
+        <tbody id="writing-rows">
+          <tr><td class="muted">loading...</td></tr>
+        </tbody>
+      </table>
+      <noscript>
+        <table class="rows">
+          <tbody>
+            <tr>
+              <td class="t"><a href="https://medium.com/@sabiqaz/handle-race-condition-dengan-locking-database-e5cc3a14afbb">handle race condition dengan locking database</a></td>
+              <td class="c">medium</td>
+            </tr>
+            <tr>
+              <td class="t"><a href="https://medium.com/@sabiqaz/race-condition-mau-update-aja-kok-rebutan-d903b3b23619">race condition, mau update aja kok rebutan</a></td>
+              <td class="c">medium</td>
+            </tr>
+          </tbody>
+        </table>
+      </noscript>
+      <p class="small">more on <a href="https://medium.com/@sabiqaz">medium/@sabiqaz</a></p>
+
+      <h3 id="about">about</h3>
+      <p>i'm <b>sabiq azhar prayoga</b>, a software engineer in depok, indonesia. i work where business operations meet backend engineering — erp, accounting and inventory flows, transaction processing — and i care that those systems stay stable, accurate, and operable long after handoff.</p>
+      <p>right now: erp + tax compliance tooling (coretax/ppn), cdc pipelines in go, lua dev-tooling. currently learning distributed-systems fundamentals and writing about locking and cdc.</p>
+    </div>
+  </div>
+
+  <footer>
+    <a href="mailto:sabiqandazhar@gmail.com">email</a>
+    <a href="https://github.com/sabiqazhar">github</a>
+    <a href="https://linkedin.com/in/sabiqazhar">linkedin</a>
+    <a href="https://medium.com/@sabiqaz">medium</a>
+    <span>© <span id="year">2026</span> sabiq azhar</span>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>

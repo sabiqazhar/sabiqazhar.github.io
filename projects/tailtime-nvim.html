@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>tailtime.nvim — sabiqazhar</title>
+  <meta name="description" content="Case notes: tailtime.nvim — privacy-first Neovim time tracker with project tasks, live timer, git integration, local-only storage.">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div id="masthead">
+    <a class="logo" href="/">sabiqazhar</a>
+    <span class="bc"><a href="/">home</a> / work / tailtime.nvim</span>
+  </div>
+  <div id="topnav">
+    <a href="/#work">work</a>
+    <a href="/#experience">experience</a>
+    <a href="/#writing">writing</a>
+    <a href="/#about">about</a>
+  </div>
+  <hr>
+  <div class="posting">
+    <h1>tailtime.nvim</h1>
+    <p class="small">dev tool · lua, neovim api, vim.uv, lualine · 2026-07-16 · <a href="https://github.com/sabiqazhar/tailtime.nvim">repo</a></p>
+    <div class="body">
+      <p>Time tracking in Neovim that respects your privacy. Built after a sprint where tickets kept getting crushed but the <i>actual</i> time spent on each one was a mystery. A lightweight, private, project-aware time tracker that lives entirely inside Neovim. No cloud, no accounts, no data leaving your machine.</p>
+      <h2>problem</h2>
+      <ul>
+        <li>Time tracking tools are either bloated web apps or require third-party accounts.</li>
+        <li>Developers forget to log time manually — context switches make accurate tracking impossible.</li>
+        <li>No easy way to track time per-project with priority levels, directly from the editor.</li>
+        <li>Git integration was missing — seeing code changes alongside time unlocks real productivity insights.</li>
+      </ul>
+      <h2>solution</h2>
+      <ul>
+        <li><b>Project-based tasks</b> — auto-detected from the current working directory.</li>
+        <li><b>Priority levels</b> — low/medium/high with configurable icons.</li>
+        <li><b>Live timer</b> — displayed in lualine (or any statusline section).</li>
+        <li><b>Persistent storage</b> — daily JSON files in <code>./tailtask/</code>.</li>
+        <li><b>Git integration</b> — commit baseline on start, <code>+/-</code> diff on completion.</li>
+        <li><b>In-editor reports</b> — grouped by project with totals, peak hours, git stats; CSV/JSON export.</li>
+      </ul>
+      <h2>impact</h2>
+      <p>Honest time tracking for developers who live in the terminal. No accounts, no sync, no overhead — just start a task, work, stop it, see the report. The git integration closes the loop between "how long" and "how much code actually changed," turning vague estimates into measurable output.</p>
+      <p><a href="/#work">[ back to work ]</a></p>
+    </div>
+  </div>
+  <footer>
+    <a href="/">home</a>
+    <a href="https://github.com/sabiqazhar">github</a>
+    <span>© sabiq azhar</span>
+  </footer>
+</body>
+</html>

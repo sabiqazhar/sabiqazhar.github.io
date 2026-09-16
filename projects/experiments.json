@@ -1,0 +1,22 @@
+{
+  "experiments": [
+    {
+      "name": "clinic-monolith",
+      "url": "https://github.com/sabiqazhar/clinic-monolith",
+      "desc": "Modular monolith structure in Go",
+      "tag": "go"
+    },
+    {
+      "name": "frappe-env-setup",
+      "url": "https://github.com/sabiqazhar/frappe-env-setup",
+      "desc": "One-script Docker setup for Frappe dev",
+      "tag": "docker"
+    },
+    {
+      "name": "superset-env-setup",
+      "url": "https://github.com/sabiqazhar/superset-env-setup",
+      "desc": "Minimalist Superset BI setup",
+      "tag": "data"
+    }
+  ]
+}

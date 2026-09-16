@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <script>
-        var path = window.location.pathname;
-        var base = window.location.pathname.match(/^\/[^\/]+\//);
-        if (base) {
-            var relative = path.replace(base[0], '/');
-            window.location.replace(base[0] + '?path=' + encodeURIComponent(relative));
-        }
-    </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>not found — sabiqazhar</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body></body>
+<body>
+  <div id="masthead">
+    <a class="logo" href="/">sabiqazhar</a>
+    <span class="bc"><a href="/">home</a> / 404</span>
+  </div>
+  <hr>
+  <p>nothing here. <a href="/">back home</a>.</p>
+  <footer>
+    <a href="/">home</a>
+    <span>© sabiq azhar</span>
+  </footer>
+</body>
 </html>

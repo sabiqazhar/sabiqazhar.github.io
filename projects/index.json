@@ -4,9 +4,27 @@
       "slug": "erpnext-indonesia-localization",
       "title": "ERPNext Indonesia Localization",
       "date": "2024-11-20",
-      "excerpt": "ERPNext Indonesia Localization is a custom application that helps businesses comply with Indonesian tax regulations through ERPNext."
-    }
-  ,
-{"slug":"tailtime-nvim","title":"tailtime.nvim","date":"2026-07-16","excerpt":"A lightweight, privacy-first time tracking plugin for Neovim with project-based tasks, priority levels, live timer, git integration, and local-only storage."}
-]
+      "excerpt": "A custom application that helps businesses comply with Indonesian tax regulations through ERPNext — Coretax-compatible XML, PPN + NITKU, batch export.",
+      "tag": "erp / python",
+      "repo": "https://github.com/sabiqazhar/erpnext-indonesia-localization",
+      "page": "erpnext-indonesia-localization.html"
+    },
+    {
+      "slug": "etl-pipeline-go",
+      "title": "etl-pipeline-go",
+      "date": "active",
+      "excerpt": "High-performance CDC data streaming in Go — ordering, backpressure, idempotent replays.",
+      "tag": "data / go",
+      "repo": "https://github.com/sabiqazhar/etl-pipeline-go"
+    },
+    {
+      "slug": "tailtime-nvim",
+      "title": "tailtime.nvim",
+      "date": "2026-07-16",
+      "excerpt": "A lightweight, privacy-first time tracking plugin for Neovim with project-based tasks, priority levels, live timer, git integration, and local-only storage.",
+      "tag": "tool / lua",
+      "repo": "https://github.com/sabiqazhar/tailtime.nvim",
+      "page": "tailtime-nvim.html"
+    },
+  ]
 }

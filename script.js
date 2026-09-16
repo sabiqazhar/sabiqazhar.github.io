@@ -1,122 +1,100 @@
-const basePath = window.location.pathname.endsWith('/')
-  ? window.location.pathname
-  : window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+// data-driven sections: work + experiments from local json, writing from github readme.
+(function () {
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
 
-function navigate(e) {
-  e.preventDefault();
-  const href = e.currentTarget.getAttribute('href');
-  history.pushState(null, '', href);
-  handleRoute();
-}
-
-function handleRoute() {
-  const path = window.location.pathname.replace(basePath, '').replace(/\/$/, '');
-
-  if (!path || path === 'home') {
-    renderHome();
-  } else if (path === 'projects') {
-    renderBlogList();
-  } else if (path.startsWith('projects/')) {
-    const slug = path.split('/')[1];
-    renderPost(slug);
-  } else if (path === 'contact') {
-    renderContact();
-  } else {
-    renderHome();
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
-}
+  function lower(s) { return String(s == null ? '' : s).toLowerCase(); }
 
-async function renderHome() {
-  const html = marked.parse(`
-# Hello World!
-
-<img src="asset/sabiqaz.jpeg" alt="Sabiq Azhar" class="profile-photo-inline">
-
-I build software that translates complex business operations into reliable systems.
-
-My work centers on **enterprise resource planning**, **financial compliance**, and **high-volume transaction processing**. I have engineered backend solutions for large-scale industries, ensuring data consistency in inventory management and automating critical accounting workflows.
-
-Beyond enterprise systems, I have developed platforms that connect users to property services and streamline operations for small businesses. My approach is rooted in understanding the operational problem first, then designing the architecture to solve it sustainably.
-
-I prioritize **stability**, **accuracy**, and delivering tools that empower business teams rather than just writing code.
-
----
-
-*This is my little corner of the internet. Take a look at my [projects](/projects) or feel free to [reach out](mailto:sabiqandazhar@gmail.com) if you'd like to collaborate.*
-  `);
-  document.getElementById('content-area').innerHTML = html;
-}
-
-async function renderBlogList() {
-  const container = document.getElementById('content-area');
-  container.innerHTML = '<p>Loading post list...</p>';
-
-  try {
-    const res = await fetch(basePath + 'projects/index.json');
-    if (!res.ok) throw new Error('Failed to load index.json');
-
-    const data = await res.json();
-
-    let html = '<h2>Project Archive</h2><ul class="projects-list">';
-    data.posts.forEach(post => {
-      html += `
-            <li class="post-item">
-                <div class="post-date">${post.date}</div>
-                <a href="/projects/${post.slug}" onclick="navigate(event)" class="post-title">${post.title}</a>
-                <p class="post-excerpt">${post.excerpt}</p>
-                <a href="/projects/${post.slug}" onclick="navigate(event)">[Read More...]</a>
-                <hr>
-            </li>`;
+  function getJSON(url) {
+    return fetch(url).then(function (r) {
+      if (!r.ok) throw new Error('http ' + r.status);
+      return r.json();
     });
-    html += '</ul>';
-    container.innerHTML = html;
-
-  } catch (err) {
-    container.innerHTML = `<p style="color:red">Error loading Projects list: ${err.message}</p>`;
   }
-}
 
-async function renderPost(slug) {
-  const container = document.getElementById('content-area');
-  container.innerHTML = '<p>Loading post...</p>';
-
-  try {
-    const res = await fetch(basePath + `projects/${slug}.md`);
-    if (!res.ok) throw new Error('Post not found');
-
-    const text = await res.text();
-    const backBtn = `<p><a href="/projects" onclick="navigate(event)">&larr; Back to Project List</a></p>`;
-    container.innerHTML = backBtn + marked.parse(text);
-
-  } catch (err) {
-    container.innerHTML = `<p style="color:red">Error: ${err.message}</p>`;
+  // --- selected work <- projects/index.json ---
+  var workRows = document.getElementById('work-rows');
+  if (workRows) {
+    getJSON('projects/index.json').then(function (d) {
+      var posts = (d && d.posts) || [];
+      if (!posts.length) throw new Error('empty');
+      workRows.innerHTML = posts.map(function (p) {
+        var href = p.page ? 'projects/' + p.page : p.repo;
+        var extra = p.page && p.repo
+          ? ' <a href="' + esc(p.repo) + '">repo</a>'
+          : '';
+        return '<tr>' +
+          '<td class="d">' + esc(p.date || '') + '</td>' +
+          '<td class="t"><a href="' + esc(href) + '">' + esc(lower(p.title)) + '</a>' +
+          (p.excerpt ? '<br><span class="snip">' + esc(lower(p.excerpt)) + extra + '</span>' : extra) +
+          '</td>' +
+          '<td class="c">' + esc(lower(p.tag || '')) + '</td>' +
+          '</tr>';
+      }).join('');
+    }).catch(function () {
+      workRows.innerHTML = '<tr><td><span class="err">could not load work list.</span> ' +
+        'see <a href="https://github.com/sabiqazhar?tab=repositories">github</a>.</td></tr>';
+    });
   }
-}
 
-async function renderContact() {
-  const html = marked.parse(`
-# Contact Me
-
-If you'd like to collaborate, have a question, or just want to say hello, feel free to reach out.
-
-## Social Media
-
-- <i class="ph ph-github-logo"></i> **GitHub:** [github.com/sabiqazhar](https://github.com/sabiqazhar)
-- <i class="ph ph-medium-logo"></i> **Medium:** [medium.com/@sabiqazhar](https://medium.com/@sabiqaz)
-- <i class="ph ph-linkedin-logo"></i> **LinkedIn:** [linkedin.com/in/sabiqazhar](https://linkedin.com/in/sabiqazhar)
-- <i class="ph ph-envelope-simple"></i> **Email:** [sabiqandazhar@gmail.com](mailto:sabiqandazhar@gmail.com)
-  `);
-  document.getElementById('content-area').innerHTML = html;
-}
-
-window.addEventListener('popstate', handleRoute);
-window.addEventListener('load', () => {
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  const params = new URLSearchParams(window.location.search);
-  const redirectPath = params.get('path');
-  if (redirectPath) {
-    history.replaceState(null, '', redirectPath);
+  // --- experiments <- projects/experiments.json ---
+  var expList = document.getElementById('exp-list');
+  if (expList) {
+    getJSON('projects/experiments.json').then(function (d) {
+      var items = (d && d.experiments) || [];
+      if (!items.length) throw new Error('empty');
+      expList.innerHTML = items.map(function (e) {
+        return '<li><a href="' + esc(e.url) + '">' + esc(lower(e.name)) + '</a>' +
+          (e.desc ? ' — ' + esc(lower(e.desc)) : '') +
+          (e.tag ? ' <span class="muted">(' + esc(lower(e.tag)) + ')</span>' : '') +
+          '</li>';
+      }).join('');
+    }).catch(function () {
+      expList.innerHTML = '<li><span class="err">could not load experiments.</span> ' +
+        'see <a href="https://github.com/sabiqazhar?tab=repositories">github</a>.</li>';
+    });
   }
-  handleRoute();
-});
+
+  // --- writing <- github profile readme (BLOG-POST-LIST block) ---
+  var writingRows = document.getElementById('writing-rows');
+  var FALLBACK_WRITING = [
+    { title: 'Handle Race Condition Dengan Locking Database',
+      url: 'https://medium.com/@sabiqaz/handle-race-condition-dengan-locking-database-e5cc3a14afbb' },
+    { title: 'Race Condition, Mau update aja kok rebutan.',
+      url: 'https://medium.com/@sabiqaz/race-condition-mau-update-aja-kok-rebutan-d903b3b23619' }
+  ];
+  function renderWriting(posts) {
+    writingRows.innerHTML = posts.map(function (p) {
+      return '<tr>' +
+        '<td class="t"><a href="' + esc(p.url) + '">' + esc(lower(p.title)) + '</a></td>' +
+        '<td class="c">medium</td>' +
+        '</tr>';
+    }).join('');
+  }
+  if (writingRows) {
+    fetch('https://raw.githubusercontent.com/sabiqazhar/sabiqazhar/master/README.md')
+      .then(function (r) {
+        if (!r.ok) throw new Error('http ' + r.status);
+        return r.text();
+      })
+      .then(function (md) {
+        var block = md.split('BLOG-POST-LIST:START')[1] || '';
+        block = block.split('BLOG-POST-LIST:END')[0] || '';
+        var re = /-\s*\[(.+?)\]\((.+?)\)/g, m, posts = [];
+        while ((m = re.exec(block))) posts.push({ title: m[1].trim(), url: m[2].trim() });
+        if (!posts.length) throw new Error('no posts found');
+        renderWriting(posts);
+      })
+      .catch(function () {
+        // readme unreachable (offline / rate limited) — fall back to last known list
+        renderWriting(FALLBACK_WRITING);
+      });
+  }
+})();
