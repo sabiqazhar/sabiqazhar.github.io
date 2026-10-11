@@ -17,6 +17,13 @@
       "url": "https://github.com/sabiqazhar/superset-env-setup",
       "desc": "Minimalist Superset BI setup",
       "tag": "data"
+    },
+    {
+      "name": "shokunin-go",
+      "url": "https://github.com/sabiqazhar/superset-env-setup",
+      "desc": "Book for technical level up middle to senior in Golang",
+      "tag": "markdown"
     }
+
   ]
 }
