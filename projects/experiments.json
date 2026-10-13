@@ -23,7 +23,12 @@
       "url": "https://sabiqazhar.github.io/shokunin-go/",
       "desc": "Book for technical level up middle to senior in Golang",
       "tag": "markdown"
+    },
+    {
+      "name": "junior-note-SRE",
+      "url": "https://sabiqazhar.github.io/junior-note-SRE/",
+      "desc": "mini course to be bare minimum SRE",
+      "tag": "markdown"
     }
-
   ]
 }
